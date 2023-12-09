@@ -1,0 +1,8 @@
+Bootloader (SBL)
+^^^^^^^^^^^^^^^^
+
+.. toctree::
+    :maxdepth: 2
+
+    ../../boot/boot
+    ../../boot/boot_k3

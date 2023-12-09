@@ -1,0 +1,60 @@
+clean::
+	$(RM) package/ti.drv.pruss.sch
+	$(RM) package/.vers_g200
+	$(RM) package/.vers_r200
+	$(RM) package/.vers_b200
+	$(RM) package/.xdc-J06
+	$(RM) package/ti_drv_pruss.java
+	$(RM) package/ti_drv_pruss.class
+	$(RM) package/package_ti.drv.pruss.c
+	$(RM) package/package.defs.h
+	$(RM) Settings.h
+	$(RM) package/internal/Settings.xdc.h
+	$(RM) package/ti.drv.pruss.ccs
+
+.interfaces: package/ti.drv.pruss.sch package/.vers_g200 package/.vers_r200 package/.vers_b200 package/.xdc-J06 package/ti_drv_pruss.java package/package_ti.drv.pruss.c package/package.defs.h Settings.h package/internal/Settings.xdc.h package/ti.drv.pruss.ccs 
+package/package.xdc.inc: package/.vers_g200
+package/.vers_g200:
+package/package.xdc.inc: package/.vers_r200
+package/.vers_r200:
+package/package.xdc.inc: package/.vers_b200
+package/.vers_b200:
+
+.interfaces: Settings.xdc 
+
+# schema include file dependencies
+package.xs:
+package/package.xdc.inc: package.xs
+
+# schema update dependencies
+package/package.xdc.inc: Settings.xdc
+package/package.xdc.inc: xdc/IPackage.xdc
+xdc/IPackage.xdc:
+vpath xdc/IPackage.xdc $(XPKGVPATH)
+
+ifneq (clean,$(MAKECMDGOALS))
+/home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/shelf/java/tar.jar:
+package/package.xdc.inc: /home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/shelf/java/tar.jar
+/home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/services/spec/java/package.jar:
+package/package.xdc.inc: /home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/services/spec/java/package.jar
+/home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/shelf/java/js.jar:
+package/package.xdc.inc: /home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/shelf/java/js.jar
+/home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/shelf/java/antlr.jar:
+package/package.xdc.inc: /home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/shelf/java/antlr.jar
+/home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/services/global/java/package.jar:
+package/package.xdc.inc: /home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/services/global/java/package.jar
+/home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/shelf/java/ecj.jar:
+package/package.xdc.inc: /home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/shelf/java/ecj.jar
+/home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/services/intern/xsr/java/package.jar:
+package/package.xdc.inc: /home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/services/intern/xsr/java/package.jar
+/home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/services/intern/gen/java/package.jar:
+package/package.xdc.inc: /home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/services/intern/gen/java/package.jar
+/home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/services/intern/cmd/java/package.jar:
+package/package.xdc.inc: /home/gtbldadm/nightlybuilds/repo_manifests/scripts/jenkins/coresdk_rtos_jacinto_08_00_00_37/xdctools_3_61_04_40_core/packages/xdc/services/intern/cmd/java/package.jar
+endif
+# goals for files generated during schema generation but unspecified by schema's pattern rule
+package/package.xdc.inc: Settings.h
+Settings.h:
+package/package.xdc.inc: package/internal/Settings.xdc.h
+package/internal/Settings.xdc.h:
+

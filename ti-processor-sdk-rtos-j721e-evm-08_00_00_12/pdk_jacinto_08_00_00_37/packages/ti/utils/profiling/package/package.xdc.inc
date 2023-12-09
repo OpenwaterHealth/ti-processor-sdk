@@ -1,0 +1,15 @@
+package.xdc
+package.xs
+Settings.xdc
+package/ti.utils.profiling.sch
+package/.vers_g200
+package/.vers_r200
+package/.vers_b200
+package/.xdc-J06
+package/ti_utils_profiling.java
+package/ti_utils_profiling.class
+package/package_ti.utils.profiling.c
+package/package.defs.h
+Settings.h
+package/internal/Settings.xdc.h
+package/ti.utils.profiling.ccs

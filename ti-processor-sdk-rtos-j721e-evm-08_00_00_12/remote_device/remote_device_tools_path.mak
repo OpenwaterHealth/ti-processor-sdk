@@ -1,0 +1,15 @@
+ifndef $(REMOTE_DEVICE_TOOLS_PATH_MAK)
+REMOTE_DEVICE_TOOLS_PATH_MAK = 1
+
+PSDK_PATH = $(abspath ..)
+
+TIARMCGT_ROOT ?= $(PSDK_PATH)/ti-cgt-arm_20.2.0.LTS
+
+BIOS_PATH ?= $(PSDK_PATH)/bios_6_83_02_07
+XDCTOOLS_PATH ?= $(PSDK_PATH)/xdctools_3_61_04_40_core
+
+PDK_PATH ?= $(PSDK_PATH)/pdk_jacinto_08_00_00_37
+
+REMOTE_DEVICE_PATH ?=$(PSDK_PATH)/remote_device
+
+endif # ifndef $(REMOTE_DEVICE_TOOLS_PATH_MAK)

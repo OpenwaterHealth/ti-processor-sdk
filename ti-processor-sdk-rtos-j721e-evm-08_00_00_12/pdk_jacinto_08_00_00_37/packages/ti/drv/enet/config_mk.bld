@@ -1,0 +1,20 @@
+/******************************************************************************
+ * FILE PURPOSE: Build configuration Script for the Enet Driver
+ ******************************************************************************
+ * FILE NAME: config.bld
+ *
+ * DESCRIPTION:
+ *  This file contains the build configuration script for the Enet driver
+ *  and is responsible for configuration of the paths for the various
+ *  tools required to build the driver.
+ *
+ * Copyright (c) Texas Instruments Incorporated 2020
+ *****************************************************************************/
+
+/* Configure the Enet Release Version Information */
+var enetDriverReleaseVersion = (""+Pkg.version.replace(/\s/g, "")).split(',');
+
+var Build = xdc.useModule('xdc.bld.BuildEnvironment');
+Build.useTargets=null;
+
+

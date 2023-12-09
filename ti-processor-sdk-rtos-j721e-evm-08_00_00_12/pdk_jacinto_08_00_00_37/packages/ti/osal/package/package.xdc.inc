@@ -1,0 +1,15 @@
+package.xdc
+package.xs
+Settings.xdc
+package/ti.osal.sch
+package/.vers_g200
+package/.vers_r200
+package/.vers_b200
+package/.xdc-J06
+package/ti_osal.java
+package/ti_osal.class
+package/package_ti.osal.c
+package/package.defs.h
+Settings.h
+package/internal/Settings.xdc.h
+package/ti.osal.ccs

@@ -1,0 +1,10 @@
+Developer Notes
+^^^^^^^^^^^^^^^
+
+.. toctree::
+    :maxdepth: 1
+
+    ../../developer_notes/freertos_guidelines.rst
+    ../../developer_notes/ipc_lld_migration_guide.rst
+    ../../developer_notes/xip_programming_guide.rst
+    ../../developer_notes/new_xip_programming_guide.rst

@@ -1,0 +1,1125 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4.15. SPI &mdash; Platform Development Kit (PDK) - JACINTO User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Platform Development Kit (PDK) - JACINTO User Guide" href="../index.html"/>
+        <link rel="up" title="4. Modules" href="../family_cfg/jacinto/index_modules_jacinto.html"/>
+        <link rel="next" title="4.16. UART" href="uart.html"/>
+        <link rel="prev" title="4.14. OTP KEYWRITER" href="keywriter.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_jacinto.html" class="icon icon-home"> Platform Development Kit (PDK) - JACINTO User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                08_00_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_release_notes_jacinto.html">2. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">3. Getting Started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../family_cfg/jacinto/index_modules_jacinto.html">4. Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="csl.html">4.1. CSL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freertos.html">4.2. FreeRTOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="osal.html">4.3. OSAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dss.html">4.4. DSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enet.html">4.5. ENET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fvid2.html">4.6. FVID2 User Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpio.html">4.7. GPIO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="i2c.html">4.8. I2C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ipc.html">4.9. IPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mcasp.html">4.10. McASP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pm.html">4.11. PM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sa.html">4.12. SA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../family_cfg/jacinto/index_modules_sciclient_jacinto.html">4.13. SCICLIENT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="keywriter.html">4.14. OTP KEYWRITER</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">4.15. SPI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">4.15.1. Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modes-of-operation">4.15.1.1. Modes of Operation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#driver-configuration">4.15.2. Driver Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#board-specific-configuration">4.15.2.1. Board Specific Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#soc-specific-configuration">4.15.2.2. SoC Specific Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spi-configuration-structure">4.15.2.3. SPI Configuration Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#apis">4.15.3. APIs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#open-spi">4.15.3.1. Open SPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">4.15.4. Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">4.15.4.1. SPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qspi">4.15.4.2. QSPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ospi">4.15.4.3. OSPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mcspi">4.15.4.4. MCSPI</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ospi-driver-configuration-to-support-qspi-flash">4.15.5. OSPI Driver Configuration to support QSPI flash</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#support-for-benchmark-testing">4.15.6. Support for Benchmark Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="uart.html">4.16. UART</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../family_cfg/jacinto/index_modules_udma_jacinto.html">4.17. UDMA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pmic.html">4.18. PMIC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mmcsd.html">4.19. MMCSD</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_boot_jacinto.html">5. Bootloader (SBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_board_jacinto.html">6. Board/EVM Abstraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_howto_jacinto.html">7. How to Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_faq_jacinto.html">8. Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_developer_notes_jacinto.html">9. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_jacinto.html">Platform Development Kit (PDK) - JACINTO User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_jacinto.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../family_cfg/jacinto/index_modules_jacinto.html">4. Modules</a> &raquo;</li>
+      
+    <li>4.15. SPI</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="spi">
+<h1>4.15. SPI<a class="headerlink" href="#spi" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>4.15.1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>SPI driver enables communication for general SPI, MCSPI (Multichannel
+SPI), QSPI (Quad SPI) and OSPI (Octal SPI) based peripherals on board
+through common API to application.
+MCSPI is a generic full-duplex interface supporting transmit and
+receive of data over SPI bus. QSPI/OSPI is a variant of SPI supports four
+receive data lanes. Driver supports configuration for either single,
+dual, quad or octal data lines</p>
+<div class="section" id="modes-of-operation">
+<h3>4.15.1.1. Modes of Operation<a class="headerlink" href="#modes-of-operation" title="Permalink to this headline">¶</a></h3>
+<p>Following modes of operations are supported:</p>
+<p><strong>SPI_MODE_BLOCKING</strong>
+<em>SPI_transfer()</em> API blocks code execution until transaction has
+completed. By default, SPI driver operates in blocking mode. This
+ensures only one SPI transaction operates at a given time. This mode
+is supported in both interrupt or non-interrupt configurations.</p>
+<p><strong>SPI_MODE_CALLBACK</strong>
+<em>SPI_transfer()</em> API returns without waiting for completion of
+transaction in this case. Callback function registered by application
+is invoked once transaction is complete.This mode is supported only in
+interrupt configuration.</p>
+</div>
+</div>
+<div class="section" id="driver-configuration">
+<h2>4.15.2. Driver Configuration<a class="headerlink" href="#driver-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="board-specific-configuration">
+<h3>4.15.2.1. Board Specific Configuration<a class="headerlink" href="#board-specific-configuration" title="Permalink to this headline">¶</a></h3>
+<p>All board specific configurations eg:enabling clock and pin-mux for SPI
+pins are required before calling any driver APIs.By default Board_Init()
+API supports all initialization sequence for TI supported EVMs. In
+addition it initializes UART instance for Console/STDIO.Refer <a class="reference external" href="../board/board_support.html#board-support">PDK Board Support</a>
+for additional details.Once board specific configuration is
+complete&nbsp;<em>SPI_init()</em> API&nbsp;should be called to initialize driver.</p>
+</div>
+<div class="section" id="soc-specific-configuration">
+<h3>4.15.2.2. SoC Specific Configuration<a class="headerlink" href="#soc-specific-configuration" title="Permalink to this headline">¶</a></h3>
+<p>All SoC specific configurations (eg: SPI module registers base address,
+interrupt configurations, etc.) can be set using SPI_socSetInitCfg() SoC
+driver API before calling any SPI driver APIs. The default SoC specific
+configurations can be retrieved using SPI_socGetInitCfg() SoC driver
+API.</p>
+</div>
+<div class="section" id="spi-configuration-structure">
+<h3>4.15.2.3. SPI Configuration Structure<a class="headerlink" href="#spi-configuration-structure" title="Permalink to this headline">¶</a></h3>
+<p>The <em>SPI_soc.c</em> file binds driver with hardware attributes on the board
+through <em>SPI_config[]</em> structure. This structure must be provided to the
+SPI driver. It must be initialized before the <em>SPI_init()</em> function is
+called and cannot be changed afterwards.</p>
+<p>Driver&nbsp; requires common <em>SPI_config[]</em>&nbsp; to configure hardware attributes
+of MCSPI and QSPI/OSPI peripherals on SOC&nbsp;and board. First all MCSPI related
+hardware attributes is defined&nbsp;followed by QSPI/OSPI hardware attributes.
+Application will need to include appropriate offset to instance while
+invoking <em>SPI_open()</em> API..</p>
+<p>For details about individual fields of this library structure, see the
+PDK doxygen documentation</p>
+</div>
+</div>
+<div class="section" id="apis">
+<h2>4.15.3. APIs<a class="headerlink" href="#apis" title="Permalink to this headline">¶</a></h2>
+<p>API Reference for application:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include</span> <span class="cpf">&lt;ti/drv/spi/SPI.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>SPI IP V1 driver also supports multi-channel API&#8217;s:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include</span> <span class="cpf">&lt;ti/drv/spi/MCSPI.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<p class="rubric" id="spi-section"><em>Description</em></p>
+<div class="section" id="open-spi">
+<h3>4.15.3.1. Open SPI<a class="headerlink" href="#open-spi" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="p">...</span>
+<span class="n">Board_init</span><span class="p">(</span><span class="n">boardCfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">SPI_socGetInitCfg</span><span class="p">(</span><span class="n">peripheralNum</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">spi_cfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">SPI_socSetInitCfg</span><span class="p">(</span><span class="n">peripheralNum</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">spi_cfg</span><span class="p">);</span>
+<span class="n">SPI_Params_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">spiParams</span><span class="p">);</span>
+<span class="n">spiParams</span><span class="p">.</span><span class="n">transferMode</span> <span class="o">=</span> <span class="n">SPI_MODE_BLOCKING</span><span class="p">;</span>
+<span class="n">spiParams</span><span class="p">.</span><span class="n">transferCallbackFxn</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">SPI_open</span><span class="p">(</span><span class="n">peripheralNum</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">spiParams</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>SPI IP V1 driver also supports multi-channel open API&#8217;s:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="p">...</span>
+<span class="n">Board_init</span><span class="p">(</span><span class="n">boardCfg</span><span class="p">);</span>
+<span class="p">...</span>
+<span class="n">MCSPI_Params_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">spiParams</span><span class="p">);</span>
+<span class="n">spiParams</span><span class="p">.</span><span class="n">transferMode</span> <span class="o">=</span> <span class="n">SPI_MODE_BLOCKING</span><span class="p">;</span>
+<span class="n">spiParams</span><span class="p">.</span><span class="n">transferCallbackFxn</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">MCSPI_open</span><span class="p">(</span><span class="n">peripheralNum</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">spiParams</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>At this point SPI driver is ready for data transfer in blocking mode
+on specific instance identified by handle. Pseudo/Sample code for
+SPI&nbsp;read/write transaction is included below.&nbsp;Refer example for
+additional details</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="p">...</span>
+<span class="n">spiTransaction</span><span class="p">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>    <span class="cm">/* Transfer Length */</span>
+<span class="n">spiTransaction</span><span class="p">.</span> <span class="n">txBuf</span> <span class="o">=</span> <span class="n">transmitBuffer</span><span class="p">;</span> <span class="cm">/* Buffer to be written */</span>
+<span class="n">spiTransaction</span><span class="p">.</span><span class="n">rxBuf</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>  <span class="cm">/* Buffer holding the received data */</span>
+<span class="n">transferOK</span> <span class="o">=</span> <span class="n">SPI_transfer</span><span class="p">(</span><span class="n">spi</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">spiTransaction</span><span class="p">);</span> <span class="cm">/* Perform SPI transfer */</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">transferOK</span><span class="p">)</span> <span class="p">{</span>
+<span class="cm">/* SPI transaction failed */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>SPI IP V1 driver also supports multi-channel transfer API&#8217;s:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="p">...</span>
+<span class="n">spiTransaction</span><span class="p">.</span><span class="n">count</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>    <span class="cm">/* Transfer Length */</span>
+<span class="n">spiTransaction</span><span class="p">.</span> <span class="n">txBuf</span> <span class="o">=</span> <span class="n">transmitBuffer</span><span class="p">;</span> <span class="cm">/* Buffer to be written */</span>
+<span class="n">spiTransaction</span><span class="p">.</span><span class="n">rxBuf</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>  <span class="cm">/* Buffer holding the received data */</span>
+<span class="n">transferOK</span> <span class="o">=</span> <span class="n">MCSPI_transfer</span><span class="p">(</span><span class="n">spi</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">spiTransaction</span><span class="p">);</span> <span class="cm">/* Perform SPI transfer */</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">transferOK</span><span class="p">)</span> <span class="p">{</span>
+<span class="cm">/* SPI transaction failed */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">SPI_open API supports configuration of data word length in the
+SPI_Params. Currently IP V1 driver (for AM3/4/5 devices) supports
+8/16/32-bit word length, IP V0 driver (for Keystone devices) supports
+8/16-bit word length.</p>
+</div>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>4.15.4. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>4.15.4.1. SPI<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="21%" />
+<col width="21%" />
+<col width="19%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Expected Results</th>
+<th class="head">SoC Supported</th>
+<th class="head">Build Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><p class="first">SPI_FlashReadWrite</p>
+<p class="last">Example application</p>
+</td>
+<td><p class="first">Sample application
+demonstrating read
+and write of data
+to a NOR flash
+device connected
+over&nbsp;SPI interface.
+By default, write
+test is disabled,
+user can enable
+write test by
+defining
+TEST_SPI_NOR_WRITE
+in
+test/src/SPI_board.h</p>
+<p class="last">If write test is
+enabled, write
+transaction&nbsp;is
+verified
+for correctness by
+reading contents
+back.</p>
+</td>
+<td><p class="first">Following prints on
+console expected:
+<strong>Pass criteria:</strong></p>
+<p class="last">All tests have
+passed.</p>
+</td>
+<td>k2g,
+k2hk,
+k2l,
+k2e,
+c6657,
+c6678,
+omapl137,</td>
+<td>CCS project</td>
+</tr>
+<tr class="row-odd"><td>SPI_TestApplication</td>
+<td>Driver unit test
+application to
+validate features
+and interfaces for
+SPI driver</td>
+<td>Following prints on
+console expected:
+<strong>Pass criteria:</strong>
+All tests have
+passed.</td>
+<td>am335x
+AM437x,
+AM571x,
+AM572x,
+AM574x,</td>
+<td>CCS project</td>
+</tr>
+<tr class="row-even"><td>spiLoopback example</td>
+<td><p class="first">Example application
+to validate
+features and
+interfaces for SPI
+driver in loopback
+mode. Configures
+the SPI in loopback
+mode, transmits a
+test pattern and
+receives it back
+from SPI.</p>
+<p class="last">Note: This example
+is intended to
+demonstrate the SPI
+LLD API usage on
+the HW platforms
+where SPI memory is
+not available.
+Currently this
+example is
+supported on
+OMAPL138/C6748
+platforms.</p>
+</td>
+<td>Following prints on
+console expected:
+<strong>Pass criteria:</strong>
+All tests have
+passed.</td>
+<td>k2g,
+k2l,
+k2e,
+omapl138,
+AM335x,
+AM437x,
+AM571x,
+AM572x,
+AM574x,</td>
+<td>CCS project</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="qspi">
+<h3>4.15.4.2. QSPI<a class="headerlink" href="#qspi" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="21%" />
+<col width="21%" />
+<col width="19%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Expected Results</th>
+<th class="head">SoC Supported</th>
+<th class="head">Build Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><p class="first">QSPI_FlashReadWrite</p>
+<p class="last">Example application</p>
+</td>
+<td>Sample application
+demonstrating read
+and write of data
+to a flash device
+connected over QSPI
+interface. Write
+transaction is
+verified&nbsp; for
+correctness by
+reading contents
+back.</td>
+<td><p class="first">Following prints on
+console expected:
+<strong>Pass criteria:</strong></p>
+<p class="last">All tests have
+passed.</p>
+</td>
+<td>AM437x,
+AM571x,
+AM572x,
+AM574x,
+k2g,</td>
+<td>CCS project</td>
+</tr>
+<tr class="row-odd"><td>QSPI_TestApplication</td>
+<td>Driver unit test
+application to
+validate features
+and interfaces for
+QSPI driver</td>
+<td>Following prints on
+console expected:
+<strong>Pass criteria:</strong>
+All tests have
+passed.</td>
+<td>AM437x,
+AM571x,
+AM572x,
+AM574x,
+k2g,</td>
+<td>CCS project</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ospi">
+<h3>4.15.4.3. OSPI<a class="headerlink" href="#ospi" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="21%" />
+<col width="21%" />
+<col width="19%" />
+<col width="19%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Expected Results</th>
+<th class="head">SoC Supported</th>
+<th class="head">Build Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>OSPI_TestApplication</td>
+<td>Driver unit test
+application to
+validate features
+and interfaces for
+OSPI driver</td>
+<td>Following prints on
+console expected:
+<strong>Pass criteria:</strong>
+All tests have
+passed.</td>
+<td>am65xx
+j721e
+j7200
+am64x</td>
+<td>makefile</td>
+</tr>
+<tr class="row-odd"><td>OSPI_SMP_Test
+Application</td>
+<td>Driver unit test
+application to
+validate features
+and interfaces for
+OSPI driver in SMP
+mode. (A53 core)</td>
+<td>Following prints on
+console expected:
+<strong>Pass criteria:</strong>
+All tests have
+passed.</td>
+<td>am65xx</td>
+<td>makefile</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="mcspi">
+<h3>4.15.4.4. MCSPI<a class="headerlink" href="#mcspi" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="30%" />
+<col width="13%" />
+<col width="16%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Additional EVM
+Configuration</th>
+<th class="head">Expected
+Results</th>
+<th class="head">SoC Supported</th>
+<th class="head">Build Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>MCSPI_Serialize
+r
+Example
+application</td>
+<td>Sample
+Application
+demonstrating
+reading data
+generated from
+industrial
+input module.
+Application
+uses GPIO pins
+to assert load
+signal in order
+to generate
+date from
+industrial
+input module.</td>
+<td><p class="first"><strong>AM57x IDK EVM:</strong></p>
+<p>Short pins 1  and 2 on header
+J37(Industrial I/O)</p>
+<p><strong>AM335x ICE v2:</strong>
+Short pins 1 and 2 on header
+J14(Industrial I/O)</p>
+<p class="last"><strong>AM437x IDK EVM:</strong>
+Short pins 1 and 2 on
+header J1(Industrial I/O)</p>
+</td>
+<td><div class="first line-block">
+<div class="line"><br /></div>
+</div>
+<p>Following
+prints&nbsp; on
+console
+expected:</p>
+<p><strong>Pass
+criteria:</strong></p>
+<p class="last">All tests have
+passed.</p>
+</td>
+<td>AM335x,
+AM437x,
+AM571x,
+AM572x,
+AM574x,</td>
+<td>CCS project</td>
+</tr>
+<tr class="row-odd"><td>MCSPI_Dma_Seria
+lizer
+Example
+application</td>
+<td>Sample
+Application
+demonstrating
+reading data
+generated from
+industrial
+input module
+through EDMA.
+Application
+uses GPIO pins
+to assert load
+signal in order
+to generate
+date from
+industrial
+input module.</td>
+<td><p class="first"><strong>AM57x IDK EVM:</strong>
+Short pins 1 and 2 on header
+J37(Industrial I/O)</p>
+<p class="last"><strong>AM437x IDK EVM:</strong>
+Short pins 1 and 2 on header
+J1(Industrial I/O)</p>
+</td>
+<td><div class="first line-block">
+<div class="line"><br /></div>
+</div>
+<p>Following
+prints&nbsp; on
+console
+expected:</p>
+<p><strong>Pass
+criteria:</strong></p>
+<p class="last">All tests have
+passed.</p>
+</td>
+<td>AM437x,
+AM571x,
+AM572x,
+AM574x,</td>
+<td>CCS project</td>
+</tr>
+<tr class="row-even"><td>MCSPI_SerialFla
+sh</td>
+<td>Sample
+Application
+demonstrating
+writing and
+reading data
+from the serial
+flash through
+MCSPI EDMA
+interface.</td>
+<td><strong>AM335x GP EVM:</strong>
+Set the EVM in profile 2
+(SW8[1] = OFF,
+SW8[2] = ON,
+SW8[3:4] = OFF)</td>
+<td><div class="first line-block">
+<div class="line"><br /></div>
+</div>
+<p>Following
+prints&nbsp; on
+console
+expected:</p>
+<p><strong>Pass
+criteria:</strong></p>
+<p class="last">All tests have
+passed.</p>
+</td>
+<td>AM335x</td>
+<td>CCS project</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">MCSPI_slavemode
+example
+application</td>
+<td rowspan="2"><p class="first">Application
+demonstrates
+slave recieve
+and transmit
+features of
+McSPI.
+Application use
+case requires
+two EVMs. One
+acts as Master
+and Another as
+slave. McSPI
+connections
+information and
+addtional
+details are as
+follows.</p>
+<p><strong>No of Boards
+Required</strong>: 2</p>
+<p><strong>Connection
+requirements:</strong></p>
+<p>Consider EVM1
+as Master and
+EVM2 as
+slave.</p>
+<p>Master SPI_CLK
+- Slave SPI_CLK
+Master SPI_D0
+- Slave SPI_D1
+Master SPI_D1
+- Slave SPI_D0
+Master SPI_CS0
+- Slave SPI_CS0
+DGND - DGND</p>
+<p><strong>Additional
+Requirements:</strong></p>
+<p>Run
+&#8220;MCSPI_SlaveMod
+e_SlaveExample
+&lt;BoardType&gt;&lt;arm
+/c66x/m4&gt;Exampl
+eProject&#8221;
+first on Slave
+EVM and then
+&#8220;MCSPI_SlaveMode
+_MasterExample
+&lt;BoardType&gt;_&lt;ar
+m/c66x/m4&gt;Examp
+leProject&#8221;
+on Master EVM.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>Note:</strong></div>
+</div>
+<p>A DGND
+connection may
+be required
+from expansion
+connector on
+each board to
+make sure the
+data transfer
+is proper.</p>
+<p class="last">For AM6 or J7,
+only one EVM is
+required. Slave
+is run on MPU1_0
+core and Master
+is run on MCU1_0
+core</p>
+</td>
+<td rowspan="2"><p class="first"><strong>Pin Connections:</strong></p>
+<div class="line-block">
+<div class="line"><strong>IDK AM571x,</strong></div>
+<div class="line"><strong>IDK AM572x or IDK AM574x:</strong></div>
+<div class="line">EVM1(master) ==== EVM2(slave)</div>
+<div class="line">J21-Pin24(CLK)&#8212;J21-Pin24(CLK)</div>
+<div class="line">J21-Pin26(MISO)&#8212;J21-Pin28(MISO)</div>
+<div class="line">J21-Pin28(MOSI)&#8212;J21-Pin26(MOSI)</div>
+<div class="line">J21-Pin30(CS)&#8212;&#8212;J21-Pin30(CS)</div>
+<div class="line">J21-Pin22(DGND)&#8211;J21-Pin22(DGND)</div>
+<div class="line"><br /></div>
+<div class="line"><strong>IDK AM437x:</strong></div>
+<div class="line">EVM1(master) ==== EVM2(slave)</div>
+<div class="line">J16-Pin24(CLK)&#8212;&#8211;J16-Pin24(CLK)</div>
+<div class="line">J16-Pin26(MISO)&#8212;J16-Pin28(MISO)</div>
+<div class="line">J16-Pin28(MOSI)&#8212;J16-Pin26(MOSI)</div>
+<div class="line">J16-Pin30(CS)&#8212;&#8212;J16-Pin30(CS)</div>
+<div class="line">J16-Pin22(DGND)&#8211;J16-Pin22(DGND)</div>
+<div class="line"><br /></div>
+<div class="line"><strong>ICEv2AM335x:</strong></div>
+<div class="line">EVM1(master) ========= EVM2(slave)</div>
+<div class="line">J3-Pin12(CLK)&#8212;&#8212;&#8212;J3-Pin12(CLK)</div>
+<div class="line">J3-Pin14(MIS0)&#8212;&#8212;-J3-Pin16(MISO)</div>
+<div class="line">J3-Pin16(MOSI)&#8212;&#8212;-J3-Pin14(MOSI)</div>
+<div class="line">J3-Pin18(CS)&#8212;&#8212;&#8212;&#8211;J3-Pin18(CS)</div>
+<div class="line">J3-Pin2(DGND)&#8212;&#8212;&#8211;J3-Pin2(DGND)</div>
+<div class="line"><br /></div>
+<div class="line"><strong>BBB AM335x:</strong></div>
+<div class="line">EVM1(master) ===== EVM2(slave)</div>
+<div class="line"><br /></div>
+<div class="line">P9-Pin31(CLK)&#8212;&#8212;-P9-Pin31(CLK)</div>
+<div class="line">P9-Pin29(MISO)&#8212;&#8212;P9-Pin30(MISO)</div>
+<div class="line">P9-Pin30(MOSI)&#8212;&#8212;P9-Pin29(MOSI)</div>
+<div class="line">P9-Pin28(CS)&#8212;&#8212;&#8212;P9-Pin28(CS)</div>
+<div class="line">P9-Pin1(DGND)&#8212;&#8212;-P9-Pin1(DGND)</div>
+<div class="line"><strong>K2G EVM:</strong></div>
+<div class="line">EVM1(master) ======= EVM2(slave)</div>
+<div class="line">J12-Pin9(MISO)&#8212;&#8212;-J12-Pin9(MISO)</div>
+<div class="line">J12-Pin11(MOSI)&#8212;-J12-Pin11(MOSI)</div>
+<div class="line">J12-Pin13(CLK)&#8212;&#8212;J12-Pin13(CLK)</div>
+<div class="line">J12-Pin15(CS0)&#8212;&#8212;J12-Pin15(CS0)</div>
+<div class="line">J12-Pin49(DGND)&#8211;J12-Pin49(DGND)</div>
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>icev2AMIC110 EVM:</strong></div>
+<div class="line">EVM1(master) ======= EVM2(slave)</div>
+<div class="line">J5-Pin12(MISO)&#8212;&#8212;-J5-Pin14(MISO)</div>
+<div class="line">J5-Pin14(MOSI)&#8212;&#8212;J5-Pin12(MOSI)</div>
+<div class="line">J4-Pin13(CLK)&#8212;&#8212;J4-Pin13(CLK)</div>
+<div class="line">J5-Pin4(CS)&#8212;&#8212;&#8212;J5-Pin4(CS)</div>
+<div class="line">J5-Pin2(DGND)&#8212;&#8212;-J5-Pin2(DGND)</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>am65xx EVM/IDK:</strong></div>
+<div class="line">MCU1_0 (master) ====== MPU1_0(slave)</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>J721e EVM:</strong></div>
+<div class="line">MCU1_0 (master) ====== MPU1_0(slave)</div>
+</div>
+<div class="last line-block">
+<div class="line"><strong>J7200 EVM:</strong></div>
+<div class="line">MCU1_0 (master) ====== MPU1_0(slave)</div>
+</div>
+</td>
+<td rowspan="2"><div class="first line-block">
+<div class="line"><strong>On
+slave&nbsp;EVM
+console:</strong>
+SPI
+initialized</div>
+<div class="line">Slave: PASS:
+Txd from
+master SPI</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>On Master
+EVM&nbsp;console:</strong>
+initialized</div>
+</div>
+<div class="last line-block">
+<div class="line">Master: PASS:
+Txd from
+slave SPI</div>
+<div class="line">Done</div>
+</div>
+</td>
+<td>AM335x,
+AM437x,
+AM571x,
+AM572x,
+AM574x,
+k2g,</td>
+<td>CCS project</td>
+</tr>
+<tr class="row-even"><td>am65xx
+j721e
+j7200</td>
+<td>makefile</td>
+</tr>
+<tr class="row-odd"><td>MCSPI_SMP_Basic
+Example
+application</td>
+<td>Sample
+Application
+demonstrating
+reading data
+generated from
+industrial
+input module.
+Application
+uses GPIO pins
+to assert load
+signal in order
+to generate
+date from
+industrial
+input module
+in SMP mode.
+(A15 core)</td>
+<td>&nbsp;</td>
+<td><div class="first line-block">
+<div class="line"><br /></div>
+<div class="line"><strong>&nbsp;</strong></div>
+</div>
+<p>Following
+prints&nbsp; on
+console
+expected:</p>
+<p><strong>Pass
+criteria:</strong></p>
+<p class="last">All tests have
+passed.</p>
+</td>
+<td>AM572x-EVM</td>
+<td>CCS project</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="ospi-driver-configuration-to-support-qspi-flash">
+<h2>4.15.5. OSPI Driver Configuration to support QSPI flash<a class="headerlink" href="#ospi-driver-configuration-to-support-qspi-flash" title="Permalink to this headline">¶</a></h2>
+<p>If the board has a QSPI flash, the PDK driver needs to be updated to support the QSPI flash:</p>
+<ul class="simple">
+<li>Board QSPI Flash Instance Configuration in board_cfg.h</li>
+</ul>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#define BOARD_QSPI_NOR_INSTANCE  &lt;OSPI instance connected to QSPI flash&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>SPI SoC Driver Configurations:</li>
+</ul>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="p">...</span>
+<span class="n">OSPI_v0_HwAttrs</span> <span class="n">ospi_cfg</span><span class="p">;</span>
+
+<span class="n">SPI_init</span><span class="p">();</span>
+
+<span class="n">OSPI_socGetInitCfg</span><span class="p">(</span><span class="n">BOARD_QSPI_NOR_INSTANCE</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ospi_cfg</span><span class="p">);</span>
+<span class="n">ospi_cfg</span><span class="p">.</span><span class="n">xferLines</span>      <span class="o">=</span> <span class="n">OSPI_XFER_LINES_QUAD</span><span class="p">;</span>
+<span class="n">ospi_cfg</span><span class="p">.</span><span class="n">pageSize</span>       <span class="o">=</span> <span class="o">&lt;</span><span class="n">QSPI</span> <span class="n">flash</span> <span class="n">page</span> <span class="n">size</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">ospi_cfg</span><span class="p">.</span><span class="n">devDelays</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>   <span class="o">=</span> <span class="o">&lt;</span><span class="n">QSPI</span> <span class="n">device</span> <span class="n">delay</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">ospi_cfg</span><span class="p">.</span><span class="n">devDelays</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>   <span class="o">=</span> <span class="o">&lt;</span><span class="n">QSPI</span> <span class="n">device</span> <span class="n">delay</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">ospi_cfg</span><span class="p">.</span><span class="n">devDelays</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>   <span class="o">=</span> <span class="o">&lt;</span><span class="n">QSPI</span> <span class="n">device</span> <span class="n">delay</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">ospi_cfg</span><span class="p">.</span><span class="n">devDelays</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>   <span class="o">=</span> <span class="o">&lt;</span><span class="n">QSPI</span> <span class="n">device</span> <span class="n">delay</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">ospi_cfg</span><span class="p">.</span><span class="n">rdDataCapDelay</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">QSPI</span> <span class="n">read</span> <span class="n">capture</span> <span class="n">delay</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="n">OSPI_socSetInitCfg</span><span class="p">(</span><span class="n">BOARD_OSPI_NOR_INSTANCE</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ospi_cfg</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="support-for-benchmark-testing">
+<h2>4.15.6. Support for Benchmark Testing<a class="headerlink" href="#support-for-benchmark-testing" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="17%" />
+<col width="31%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Expected Results</th>
+<th class="head">SOC/Core Suppported</th>
+<th class="head">Build Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>OSPI flash Test App</td>
+<td>Test application used
+for performance
+benchmarking</td>
+<td><p class="first">Test application
+will print on the UART console:</p>
+<p>Board_flashWrite ### bytes at transfer
+rate #### Kbps</p>
+<p>Board_flashRead ### bytes at transfer
+rate #### Mbps</p>
+<p>Board_flashWrite CPU Load %##</p>
+<p class="last">Board_flashRead CPU Load %##</p>
+</td>
+<td>am65xx/A53
+am65xx/R5
+j721e/mpu1_0
+j721e/mcu1_0
+j7200/mpu1_0
+j7200/mcu1_0
+am64x/mpu1_0
+am64x/mcu1_0</td>
+<td>make</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ol class="last arabic simple">
+<li>Data transfer between DDR and OSPI flash memory, performance measurement does not include time to invalidate/write back cache</li>
+<li>GTC counter (200MHz) used for throughput measurement on A53, and PMU cycle counter (400MHz) on R5</li>
+<li>sysbios load moduel used for load measurement</li>
+<li>Pipeline PHY enabled, DDR mode enabled in DAC mode</li>
+<li>Pipeline PHY disabled, DDR mode disabled in INDAC mode with ospi clock divider of 32</li>
+<li>Read/write transfer size of 1M bytes</li>
+<li>Write transfer size 1M bytes with DMA chunk size of 16 bytes in DAC DMA mode</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="uart.html" class="btn btn-neutral float-right" title="4.16. UART" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="keywriter.html" class="btn btn-neutral" title="4.14. OTP KEYWRITER" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2020</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'08_00_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

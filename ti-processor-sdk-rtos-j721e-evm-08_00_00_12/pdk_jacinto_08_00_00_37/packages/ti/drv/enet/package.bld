@@ -1,0 +1,19 @@
+/******************************************************************************
+ * FILE PURPOSE: Build description for the Enet LLD Package
+ ******************************************************************************
+ * FILE NAME: package.bld
+ *
+ * DESCRIPTION:
+ *  This file contains the build specification and description for the Enet driver
+ *
+ *
+ * Copyright (c) Texas Instruments Incorporated 2020
+ *****************************************************************************/
+
+/* Generate Settings.xdc */
+var tplt = xdc.loadTemplate("./Settings.xdc.xdt");
+tplt.genFile("./Settings.xdc",enetDriverReleaseVersion);
+
+/* Generate paver.h */
+var tplt = xdc.loadTemplate("./enetver.h.xdt");
+tplt.genFile("./enetver.h",enetDriverReleaseVersion);

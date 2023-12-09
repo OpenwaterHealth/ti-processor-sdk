@@ -1,0 +1,15 @@
+package.xdc
+package.xs
+Settings.xdc
+package/ti.board.sch
+package/.vers_g200
+package/.vers_r200
+package/.vers_b200
+package/.xdc-J06
+package/ti_board.java
+package/ti_board.class
+package/package_ti.board.c
+package/package.defs.h
+Settings.h
+package/internal/Settings.xdc.h
+package/ti.board.ccs

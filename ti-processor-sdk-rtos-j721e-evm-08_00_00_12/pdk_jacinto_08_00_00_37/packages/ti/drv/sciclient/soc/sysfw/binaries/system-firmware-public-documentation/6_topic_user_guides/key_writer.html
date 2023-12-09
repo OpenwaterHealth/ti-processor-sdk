@@ -1,0 +1,528 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Key Writer &mdash; TISCI User Guide</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="TISCI User Guide" href="../index.html"/>
+        <link rel="up" title="Chapter 6: Topic User Guides" href="index.html"/>
+        <link rel="next" title="Run time read/write to KEYREV and SWREV" href="otp_revision.html"/>
+        <link rel="prev" title="Secure Debug User Guide" href="secure_debug.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> TISCI
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                21.05.00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../1_intro/index.html">Chapter 1: Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_tisci_msgs/index.html">Chapter 2: TISCI Message Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_boardcfg/index.html">Chapter 3: Board Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_trace/index.html">Chapter 4: Interpreting Trace Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_soc_doc/index.html">Chapter 5: SoC Family Specific Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Chapter 6: Topic User Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="devgrp_usage.html">Device Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="domgrp_usage.html">Domain Group Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_boot_signing.html">Signing binaries for Secure Boot on HS Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hs_boardcfg_signing.html">Signing Board Configuration on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extended_otp.html">Using Extended OTP on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dkek_management.html">Using Derived KEK on HS devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firewall_faq.html">Firewall FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sa2ul_access.html">SA2UL Access Outside of SYSFW</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security_handover.html">Performing Security Handover</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secure_debug.html">Secure Debug User Guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Key  Writer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#high-security-hs-device-sub-types">High Security (HS) Device Sub-types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hs-fs-to-hs-se-conversion">HS-FS to HS-SE Conversion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#procedure">Procedure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-fields">Supported fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#x509-configuration-template">X509 Configuration Template</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="otp_revision.html">Run time read/write to KEYREV and SWREV</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">TISCI</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Chapter 6: Topic User Guides</a> &raquo;</li>
+      
+    <li>Key  Writer</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="key-writer">
+<h1>Key  Writer<a class="headerlink" href="#key-writer" title="Permalink to this headline">¶</a></h1>
+<p>This guide describes the procedure and <a class="reference internal" href="#sysfw-pub-keywr-cert-format"><span class="std std-ref">format</span></a> to
+be followed, to populate customer keys in eFuses of the SoC.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This document must be read along side <a class="reference internal" href="../2_tisci_msgs/security/keywriter.html"><span class="doc">OTP Keywriter TISCI Description</span></a></p>
+</div>
+<div class="section" id="high-security-hs-device-sub-types">
+<h2>High Security (HS) Device Sub-types<a class="headerlink" href="#high-security-hs-device-sub-types" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><strong>HS-FS (High Security - Field Securable)</strong>:
+Device type before customer keys are programmed (the state at which the device
+leaves TI factory). In this state, device protects the ROM code, TI keys and certain
+security peripherals. HS-FS devices do not enforce secure boot process.</p>
+<blockquote>
+<div><ul class="simple">
+<li>M3 JTAG port is closed, R5 JTAG port is open</li>
+<li>DMSC Firewalls are closed, SOC Firewalls are open</li>
+<li>Board configuration need not be signed</li>
+<li>ROM Boot expects a TI signed binary (encryption is optional)</li>
+<li>System Firmware binary is signed by the TI Private key (TI MPK).
+(Refer <a class="reference internal" href="secure_boot_signing.html#pub-sign-unencrypted-mpk"><span class="std std-ref">Signing an unencrypted binary for secure boot</span></a> for more details)</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>HS-SE (High Security – Security Enforced)</strong>:
+Device type after customer keys are programmed. HS-SE devices enforce secure boot.</p>
+<blockquote>
+<div><ul class="simple">
+<li>M3, R5 JTAG ports are both closed</li>
+<li>DMSC, SOC Firewalls are both closed</li>
+<li>Board configuration needs to be signed with active customer private key (SMPK/BMPK)</li>
+<li>ROM Boot expects a dual signed, encrypted system firmware binary</li>
+<li>System Firmware binary is encrypted by the TI Encryption key (TI MEK), and signed by the
+TI Private key (TI MPK). Customer has to dual sign it with their private key (SMPK/BMPK).
+(Refer <a class="reference internal" href="secure_boot_signing.html#pub-sign-encrypted-mek"><span class="std std-ref">Signing an encrypted binary for secure boot</span></a>)</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="hs-fs-to-hs-se-conversion">
+<h2>HS-FS to HS-SE Conversion<a class="headerlink" href="#hs-fs-to-hs-se-conversion" title="Permalink to this headline">¶</a></h2>
+<p>In order to convert a HS-FS device to HS-SE device, one has to program the customer root
+key set (optionally backup key set) on the target device, using OTP Keywriter.</p>
+<p>Customer key information is encrypted into x509 certificate extension fields. A list of
+fields that OTP keywriter supports, can be found <a class="reference internal" href="#keywriter-supported-fields"><span class="std std-ref">here</span></a></p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/hsfs_to_hsse_conversion.png"><img alt="../_images/hsfs_to_hsse_conversion.png" src="../_images/hsfs_to_hsse_conversion.png" style="width: 100%;" /></a>
+</div>
+</div>
+<div class="section" id="procedure">
+<span id="keywriter-cert-gen-procedure"></span><h2>Procedure<a class="headerlink" href="#procedure" title="Permalink to this headline">¶</a></h2>
+<p>Following figure illustrates the procedure to be followed to generate the required x509 certifcate for key writing.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="../_images/key_writer_procedure.png"><img alt="../_images/key_writer_procedure.png" src="../_images/key_writer_procedure.png" style="width: 100%;" /></a>
+</div>
+<ol class="arabic simple">
+<li>OEM generates a random 256-bit number to be used as an AES encryption key for
+protecting the OTP extension data.</li>
+<li>The AES-256 key from step 1 is used to encrypt all X509 extension fields,
+which require encryption protection.</li>
+<li>Following X509 extensions are created, using TI FEK (public):<ul>
+<li>Encrypting the AES-256 key with TI FEK</li>
+<li>Signing the AES-256 key with the SMPK, and encrypting that with the TI FEK</li>
+<li>(optionally, refer step 6) signing the AES-256 key with the BMPK, and encrypting
+that with the TI FEK</li>
+</ul>
+</li>
+<li>All of the extensions from steps 1-3 are combined into a X.509 configuration which
+is used to generate and sign a certificate with the SMPK.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">SMPK Hash. BMPK Hash are computed using SHA-512 Algorithm, for corresponding
+Public keys in DER format.</p>
+</div>
+<ol class="arabic simple">
+<li>This X509 config is sigend using SMPK (priv).</li>
+<li>(Optional) If the OEM chooses to write BMPK/BMEK fields, X509 config from step 5
+needs to be signed using BMPK (priv).</li>
+</ol>
+</div>
+<div class="section" id="supported-fields">
+<span id="keywriter-supported-fields"></span><h2>Supported fields<a class="headerlink" href="#supported-fields" title="Permalink to this headline">¶</a></h2>
+<p>Following fields are supported by the Key writer.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="36%" />
+<col width="22%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Flashing</th>
+<th class="head">Mandatory/Optional</th>
+<th class="head">Encoding</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>SMPK-Pub</td>
+<td>Part of certificate, not flashed</td>
+<td>Mandatory</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>SMPKH</td>
+<td>Flashed</td>
+<td>Mandatory</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>SMPKH-BCH</td>
+<td>Flashed</td>
+<td>Computed on device</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>SMEK</td>
+<td>Flashed</td>
+<td>Mandatory</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>SMEK-BCH</td>
+<td>Flashed</td>
+<td>Computed on device</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>BMPK-Pub</td>
+<td>Part of certificate, not flashed</td>
+<td>Optional</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>BMPKH</td>
+<td>Flashed</td>
+<td>Optional</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>BMPKH-BCH</td>
+<td>Flashed</td>
+<td>Computed on device</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>BMEK</td>
+<td>Flashed</td>
+<td>Optional</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>BMEK-BCH</td>
+<td>Flashed</td>
+<td>Computed on device</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>KEYCNT</td>
+<td>Flashed</td>
+<td>Inferred</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>KEYREV</td>
+<td>Flashed</td>
+<td>Constant</td>
+<td>Set to 1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x509-configuration-template">
+<span id="sysfw-pub-keywr-cert-format"></span><h2>X509 Configuration Template<a class="headerlink" href="#x509-configuration-template" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="o">[</span> req <span class="o">]</span>
+<span class="nv">distinguished_name</span> <span class="o">=</span> req_distinguished_name
+<span class="nv">x509_extensions</span> <span class="o">=</span> v3_ca
+<span class="nv">prompt</span> <span class="o">=</span> no
+<span class="nv">dirstring_type</span> <span class="o">=</span> nobmp
+
+<span class="c1"># This information will be filled by the end user.</span>
+<span class="c1"># The current data is only a place holder.</span>
+<span class="c1"># System firmware does not make decisions based</span>
+<span class="c1"># on the contents of this distinguished name block.</span>
+<span class="o">[</span> req_distinguished_name <span class="o">]</span>
+<span class="nv">C</span> <span class="o">=</span> oR
+<span class="nv">ST</span> <span class="o">=</span> rx
+<span class="nv">L</span> <span class="o">=</span> gQE843yQV0sag
+<span class="nv">O</span> <span class="o">=</span> dqhGYAQ2Y4gFfCq0t1yABCYxex9eAxt71f
+<span class="nv">OU</span> <span class="o">=</span> a87RB35W
+<span class="nv">CN</span> <span class="o">=</span> x0FSqGTPWbGpuiV
+<span class="nv">emailAddress</span> <span class="o">=</span> kFp5uGcgWXxcfxi@vsHs9C9qQWGrBs.com
+
+<span class="o">[</span> v3_ca <span class="o">]</span>
+<span class="nv">basicConstraints</span> <span class="o">=</span> CA:true
+<span class="m">1</span>.3.6.1.4.1.294.1.64 <span class="o">=</span> ASN1:SEQUENCE:enc_aes_key
+<span class="m">1</span>.3.6.1.4.1.294.1.65 <span class="o">=</span> ASN1:SEQUENCE:enc_smpk_signed_aes_key
+<span class="m">1</span>.3.6.1.4.1.294.1.66 <span class="o">=</span> ASN1:SEQUENCE:enc_bmpk_signed_aes_key
+<span class="m">1</span>.3.6.1.4.1.294.1.67 <span class="o">=</span> ASN1:SEQUENCE:aesenc_smpkh
+<span class="m">1</span>.3.6.1.4.1.294.1.68 <span class="o">=</span> ASN1:SEQUENCE:aesenc_smek
+<span class="m">1</span>.3.6.1.4.1.294.1.70 <span class="o">=</span> ASN1:SEQUENCE:aesenc_bmpkh
+<span class="m">1</span>.3.6.1.4.1.294.1.71 <span class="o">=</span> ASN1:SEQUENCE:aesenc_bmek
+
+
+<span class="o">[</span> enc_aes_key <span class="o">]</span>
+<span class="c1"># Replace PUT-ENC-AES-KEY with acutal Encrypted AES Key</span>
+<span class="nv">val</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_ENC_AES_KEY
+<span class="nv">size</span> <span class="o">=</span> INTEGER:PUT_SIZE_ENC_AES
+
+<span class="o">[</span> enc_bmpk_signed_aes_key <span class="o">]</span>
+<span class="c1"># Replace PUT-ENC-BMPK-SIGNED-AES-KEY with acutal Encrypted BMPK signed AES Key</span>
+<span class="nv">val</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_ENC_BMPK_SIGNED_AES_KEY
+<span class="nv">size</span> <span class="o">=</span> INTEGER:PUT_SIZE_ENC_BMPK_SIGNED_AES
+
+<span class="o">[</span> enc_smpk_signed_aes_key <span class="o">]</span>
+<span class="c1"># Replace PUT-ENC-SMPK-SIGNED-AES-KEY with acutal Encrypted SMPK signed AES Key</span>
+<span class="nv">val</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_ENC_SMPK_SIGNED_AES_KEY
+<span class="nv">size</span> <span class="o">=</span> INTEGER:PUT_SIZE_ENC_SMPK_SIGNED_AES
+
+<span class="o">[</span> aesenc_smpkh <span class="o">]</span>
+<span class="c1"># Replace PUT-AESENC-SPMKH with acutal Encrypted AES Key</span>
+<span class="nv">val</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_AESENC_SMPKH
+<span class="nv">iv</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_IV_AESENC_SMPKH
+<span class="nv">rs</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_RS_AESENC_SMPKH
+<span class="nv">size</span> <span class="o">=</span> INTEGER:PUT_SIZE_AESENC_SMPKH
+
+<span class="o">[</span> aesenc_smek <span class="o">]</span>
+<span class="c1"># Replace PUT-AESENC-SMEK with acutal Encrypted AES Key</span>
+<span class="nv">val</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_AESENC_SMEK
+<span class="nv">iv</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_IV_AESENC_SMEK
+<span class="nv">rs</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_RS_AESENC_SMEK
+<span class="nv">size</span> <span class="o">=</span> INTEGER:PUT_SIZE_AESENC_SMEK
+
+<span class="o">[</span> aesenc_bmpkh <span class="o">]</span>
+<span class="c1"># Replace PUT-AESENC-BMPKH with acutal Encrypted BMPKH</span>
+<span class="nv">val</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_AESENC_BMPKH
+<span class="nv">iv</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_IV_AESENC_BMPKH
+<span class="nv">rs</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_RS_AESENC_BMPKH
+<span class="nv">size</span> <span class="o">=</span> INTEGER:PUT_SIZE_AESENC_BMPKH
+
+<span class="o">[</span> aesenc_bmek <span class="o">]</span>
+<span class="c1"># Replace PUT-AESENC-BMEK with acutal Encrypted BMEK</span>
+<span class="nv">val</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_AESENC_BMEK
+<span class="nv">iv</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_IV_AESENC_BMEK
+<span class="nv">rs</span> <span class="o">=</span> FORMAT:HEX,OCT:PUT_RS_AESENC_BMEK
+<span class="nv">size</span> <span class="o">=</span> INTEGER:PUT_SIZE_AESENC_BMEK
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="otp_revision.html" class="btn btn-neutral float-right" title="Run time read/write to KEYREV and SWREV" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="secure_debug.html" class="btn btn-neutral" title="Secure Debug User Guide" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 2016-2021</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'21.05.00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+
+        $('body').on("mousewheel", function () {
+            // Remove default behavior
+            event.preventDefault();
+            // Scroll without smoothing
+            var wheelDelta = event.wheelDelta;
+            var currentScrollPosition = window.pageYOffset;
+            window.scrollTo(0, currentScrollPosition - wheelDelta);
+        });
+      });
+  </script>
+   
+
+</body>
+</html>

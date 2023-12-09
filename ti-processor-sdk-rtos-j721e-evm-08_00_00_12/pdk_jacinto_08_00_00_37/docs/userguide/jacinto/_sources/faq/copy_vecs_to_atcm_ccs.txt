@@ -1,0 +1,38 @@
+.. _copy-vectors-2-atcm:
+
+FAQ - Why Vectors should be copied to ATCM (CCS)
+================================================
+
+Symptom
+--------
+While trying to run sysbios based application via ccs, the application crashes.
+The same application works fine when tried via OSPI Boot, MMC/SD Boot or any other boot mode that uses TI provided bootloader.
+With the previous version of PDK/SDK the same application could be executed with no exceptions.
+
+Root Cause
+----------
+With sysbios versioned 6.76.04 or later, SW Managed mode for interrupts is enabled. This mode mandates that interrupt vector be placed at location 0x0. With ATCM enabled, R5F architecture mandates that 0x0 should be mapped to ATCM. Hence the vector should be placed in ATCM.
+
+How does it work with SBL
+-------------------------
+The SBL, as part of the boot sequence copies the vectors to 0x0
+
+Fix
+---
+PDK provides an utility to copy sysbios vectors into 0x0, provided ATCM is enabled. This utility works seamlessly across different boot modes and hence no special code/steps required
+
+.. code-block:: ruby
+
+   void utilsCopyVecs2ATcm (void)
+
+- This function should be invoked before sysbios is started, can be achieved via hookfunction provided by sysbios
+- sysbios hookfunction **reset** is used to invoke this function *<PDK Install Dir>/packages/ti/build/SOC/sysbios_r5f.cfg*
+- Linker command files are updated to place this function in TCM *<PDK Install Dir>packages/ti/build/SOC/linker_r5_sysbios.lds*
+
+.. code-block:: ruby
+
+    var Reset = xdc.useModule("xdc.runtime.Reset");
+    Reset.fxns[Reset.fxns.length++] = "&utilsCopyVecs2ATcm";
+
+
+- Could potentially place sysbios vector at ATCM via the linker command file. When booting via the TI SBL, the SBL would try and copy sysbios vector to 0x0 / ATCM. TI has not validated this method.

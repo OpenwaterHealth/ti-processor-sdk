@@ -1,0 +1,1 @@
+/opt/vision_apps/vx_app_one_chan.out --cfg /opt/vision_apps/app_one_chan.cfg

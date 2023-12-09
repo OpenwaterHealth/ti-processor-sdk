@@ -1,0 +1,6 @@
+This bin folder contains board-specific directories for each of the combined.appimage outputs built.
+
+NOTE: Each board-specific dir also contains a pre-built DTB for creating the Linux boot (optimized) combined.appimage.
+   This is done to ensure that a SD card filesystem ('rootfs') is specified for the Linux filesystem in each case, for
+   easier testing.  The DTB files for each board-specific dir will need to be updated from time-to-time, whenever
+   there is a significant resource change for that specific BOARD, e.g. for a new Linux release.

@@ -1,0 +1,15 @@
+package.xdc
+package.xs
+Settings.xdc
+package/ti.drv.pruss.sch
+package/.vers_g200
+package/.vers_r200
+package/.vers_b200
+package/.xdc-J06
+package/ti_drv_pruss.java
+package/ti_drv_pruss.class
+package/package_ti.drv.pruss.c
+package/package.defs.h
+Settings.h
+package/internal/Settings.xdc.h
+package/ti.drv.pruss.ccs

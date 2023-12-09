@@ -1,0 +1,48 @@
+
+%%{
+/*!
+ *  This template implements the Settings.xdc
+ */
+  /* Versioning */
+  var ver = this;
+  for each(i=0;i<ver.length;i++)
+  {
+      if(String(ver[i]).length < 2)
+      {
+        ver[i]="0"+ver[i];
+      }
+  }
+
+  var packageVersion = "\""+ver[0]+"."+ver[1]+"."+ver[2]+"."+ver[3]+"\"";
+
+%%}
+
+module Settings
+{
+    config string enetVersionString = `packageVersion`;
+
+    /*! This variable is to control the SoC type selection.
+     * By default this variable is set to NULL.
+     *
+     * To use Enet for the selected device, add the following lines to config
+     * file and set the deviceType correctly:
+     *
+     *      var enetSettings = xdc.useModule ('ti.drv.enet.Settings');
+     *      enetSettings.socType = "am65xx j721e j7200";
+     *
+     */
+    metaonly config string socType = "";
+
+    /*! This variable is to control the device library type selection.
+     * By default this variable is set to release.
+     *
+     * To use the debug/release library, add the following lines to config
+     * file and set the library profile accordingly:
+     *
+     *      var enet Settings = xdc.useModule ('ti.drv.enet.Settings');
+     *      enetSettings.libProfile = "debug";
+     *
+     */
+    metaonly config string libProfile = "release";
+}
+

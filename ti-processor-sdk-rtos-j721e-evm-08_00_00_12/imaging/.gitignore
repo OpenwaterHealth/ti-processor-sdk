@@ -1,0 +1,20 @@
+# undo upper level excludes
+!/*
+!*.*
+
+lib/J7/A72/LINUX/release/libti_imaging_aealg.a
+lib/J7/A72/LINUX/release/libti_imaging_ittsrvr.a
+lib/J7/A72/LINUX/release/libti_imaging_sensordrv.a
+lib/J7/A72/LINUX/release/libvx_kernels_imaging.a
+lib/J7/A72/LINUX/release/libvx_target_kernels_imaging_aewb.a
+lib/J7/A72/SYSBIOS/release/libti_imaging_aealg.a
+lib/J7/A72/SYSBIOS/release/libti_imaging_ittsrvr.a
+lib/J7/A72/SYSBIOS/release/libti_imaging_sensordrv.a
+lib/J7/A72/SYSBIOS/release/libvx_kernels_imaging.a
+lib/J7/A72/SYSBIOS/release/libvx_target_kernels_imaging_aewb.a
+lib/J7/R5F/FREERTOS/release/ti_imaging_aealg.lib
+lib/J7/R5F/FREERTOS/release/ti_imaging_ittsrvr.lib
+lib/J7/R5F/FREERTOS/release/ti_imaging_sensordrv.lib
+lib/J7/R5F/FREERTOS/release/vx_kernels_imaging.lib
+lib/J7/R5F/FREERTOS/release/vx_target_kernels_imaging_aewb.lib
+out/

@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['pmic_5fcorecfg_5ft',['Pmic_CoreCfg_t',['../structPmic__CoreCfg__t.html',1,'']]],
+  ['pmic_5fcorehandle_5ft',['Pmic_CoreHandle_t',['../structPmic__CoreHandle__t.html',1,'']]],
+  ['pmic_5fdevsubsysinfo_5ft',['Pmic_DevSubSysInfo_t',['../structPmic__DevSubSysInfo__t.html',1,'']]],
+  ['pmic_5fesmcfg_5ft',['Pmic_EsmCfg_t',['../structPmic__EsmCfg__t.html',1,'']]],
+  ['pmic_5fesmintrcfg_5ft',['Pmic_EsmIntrCfg_t',['../structPmic__EsmIntrCfg__t.html',1,'']]],
+  ['pmic_5fgpiocfg_5ft',['Pmic_GpioCfg_t',['../structPmic__GpioCfg__t.html',1,'']]],
+  ['pmic_5firqstatus_5ft',['Pmic_IrqStatus_t',['../structPmic__IrqStatus__t.html',1,'']]],
+  ['pmic_5fpowercommoncfg_5ft',['Pmic_PowerCommonCfg_t',['../structPmic__PowerCommonCfg__t.html',1,'']]],
+  ['pmic_5fpowerresourcecfg_5ft',['Pmic_PowerResourceCfg_t',['../structPmic__PowerResourceCfg__t.html',1,'']]],
+  ['pmic_5fpowerresourcestat_5ft',['Pmic_PowerResourceStat_t',['../structPmic__PowerResourceStat__t.html',1,'']]],
+  ['pmic_5fpowerthermalcfg_5ft',['Pmic_PowerThermalCfg_t',['../structPmic__PowerThermalCfg__t.html',1,'']]],
+  ['pmic_5fpowerthermalstat_5ft',['Pmic_PowerThermalStat_t',['../structPmic__PowerThermalStat__t.html',1,'']]],
+  ['pmic_5frecovcntcfg_5ft',['Pmic_RecovCntCfg_t',['../structPmic__RecovCntCfg__t.html',1,'']]],
+  ['pmic_5frtcdate_5ft',['Pmic_RtcDate_t',['../structPmic__RtcDate__t.html',1,'']]],
+  ['pmic_5frtcstatus_5ft',['Pmic_RtcStatus_t',['../structPmic__RtcStatus__t.html',1,'']]],
+  ['pmic_5frtctime_5ft',['Pmic_RtcTime_t',['../structPmic__RtcTime__t.html',1,'']]],
+  ['pmic_5fwdgcfg_5ft',['Pmic_WdgCfg_t',['../structPmic__WdgCfg__t.html',1,'']]],
+  ['pmic_5fwdgerrstatus_5ft',['Pmic_WdgErrStatus_t',['../structPmic__WdgErrStatus__t.html',1,'']]]
+];

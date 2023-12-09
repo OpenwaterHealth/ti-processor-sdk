@@ -1,0 +1,12 @@
+Release Notes
+^^^^^^^^^^^^^
+
+.. toctree::
+    :maxdepth: 1
+
+    ../../release_notes/release_notes_08_00_00.rst
+    ../../release_notes/release_notes_07_03_00.rst
+    ../../release_notes/release_notes_07_01_00.rst
+    ../../release_notes/release_notes_07_00_00.rst
+    ../../release_notes/release_notes_06_02_00.rst
+    ../../release_notes/release_notes_06_01_00.rst

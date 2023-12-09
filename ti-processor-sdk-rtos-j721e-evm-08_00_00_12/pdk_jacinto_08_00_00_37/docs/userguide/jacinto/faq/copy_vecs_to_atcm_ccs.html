@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>8.4. FAQ - Why Vectors should be copied to ATCM (CCS) &mdash; Platform Development Kit (PDK) - JACINTO User Guide</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  
+
+  
+    <link rel="top" title="Platform Development Kit (PDK) - JACINTO User Guide" href="../index.html"/>
+        <link rel="up" title="8. Frequently Asked Questions" href="../family_cfg/jacinto/index_faq_jacinto.html"/>
+        <link rel="next" title="8.5. FAQ - C7x : Steps to switch C7x SysBIOS application from secure mode to non-secure mode" href="c7x_non_secure_mode.html"/>
+        <link rel="prev" title="8.3. FAQ - FVID2" href="faq_fvid2.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+  <header id="tiHeader">
+    <div class="top">
+      <ul>
+        <li id="top_logo">
+          <a href="http://www.ti.com">
+            <img src="../_static/img/ti_logo.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav"></div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_jacinto.html" class="icon icon-home"> Platform Development Kit (PDK) - JACINTO User Guide
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                08_00_00
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_release_notes_jacinto.html">2. Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">3. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_modules_jacinto.html">4. Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_boot_jacinto.html">5. Bootloader (SBL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_board_jacinto.html">6. Board/EVM Abstraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_howto_jacinto.html">7. How to Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../family_cfg/jacinto/index_faq_jacinto.html">8. Frequently Asked Questions</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="faq_common.html">8.1. FAQ - Common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_can.html">8.2. FAQ - CAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_fvid2.html">8.3. FAQ - FVID2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">8.4. FAQ - Why Vectors should be copied to ATCM (CCS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#symptom">8.4.1. Symptom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#root-cause">8.4.2. Root Cause</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-does-it-work-with-sbl">8.4.3. How does it work with SBL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fix">8.4.4. Fix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="c7x_non_secure_mode.html">8.5. FAQ - C7x : Steps to switch C7x SysBIOS application from secure mode to non-secure mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource_int_jacinto.html">8.6. FAQ - Used Resources - Interrupt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_binlist_jacinto.html">8.7. FAQ - Supported Cores by example applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq_module_clocking.html">8.8. FAQ - How to set the clock for a given module and clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps_on_secure_devices.html">8.9. FAQ - Running Apps on secure devices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../family_cfg/jacinto/index_developer_notes_jacinto.html">9. Developer Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_jacinto.html">Platform Development Kit (PDK) - JACINTO User Guide</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_jacinto.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../family_cfg/jacinto/index_faq_jacinto.html">8. Frequently Asked Questions</a> &raquo;</li>
+      
+    <li>8.4. FAQ - Why Vectors should be copied to ATCM (CCS)</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="faq-why-vectors-should-be-copied-to-atcm-ccs">
+<span id="copy-vectors-2-atcm"></span><h1>8.4. FAQ - Why Vectors should be copied to ATCM (CCS)<a class="headerlink" href="#faq-why-vectors-should-be-copied-to-atcm-ccs" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="symptom">
+<h2>8.4.1. Symptom<a class="headerlink" href="#symptom" title="Permalink to this headline">¶</a></h2>
+<p>While trying to run sysbios based application via ccs, the application crashes.
+The same application works fine when tried via OSPI Boot, MMC/SD Boot or any other boot mode that uses TI provided bootloader.
+With the previous version of PDK/SDK the same application could be executed with no exceptions.</p>
+</div>
+<div class="section" id="root-cause">
+<h2>8.4.2. Root Cause<a class="headerlink" href="#root-cause" title="Permalink to this headline">¶</a></h2>
+<p>With sysbios versioned 6.76.04 or later, SW Managed mode for interrupts is enabled. This mode mandates that interrupt vector be placed at location 0x0. With ATCM enabled, R5F architecture mandates that 0x0 should be mapped to ATCM. Hence the vector should be placed in ATCM.</p>
+</div>
+<div class="section" id="how-does-it-work-with-sbl">
+<h2>8.4.3. How does it work with SBL<a class="headerlink" href="#how-does-it-work-with-sbl" title="Permalink to this headline">¶</a></h2>
+<p>The SBL, as part of the boot sequence copies the vectors to 0x0</p>
+</div>
+<div class="section" id="fix">
+<h2>8.4.4. Fix<a class="headerlink" href="#fix" title="Permalink to this headline">¶</a></h2>
+<p>PDK provides an utility to copy sysbios vectors into 0x0, provided ATCM is enabled. This utility works seamlessly across different boot modes and hence no special code/steps required</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">void</span> <span class="n">utilsCopyVecs2ATcm</span> <span class="p">(</span><span class="n">void</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>This function should be invoked before sysbios is started, can be achieved via hookfunction provided by sysbios</li>
+<li>sysbios hookfunction <strong>reset</strong> is used to invoke this function <em>&lt;PDK Install Dir&gt;/packages/ti/build/SOC/sysbios_r5f.cfg</em></li>
+<li>Linker command files are updated to place this function in TCM <em>&lt;PDK Install Dir&gt;packages/ti/build/SOC/linker_r5_sysbios.lds</em></li>
+</ul>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">var</span> <span class="no">Reset</span> <span class="o">=</span> <span class="n">xdc</span><span class="o">.</span><span class="n">useModule</span><span class="p">(</span><span class="s2">&quot;xdc.runtime.Reset&quot;</span><span class="p">);</span>
+<span class="no">Reset</span><span class="o">.</span><span class="n">fxns</span><span class="o">[</span><span class="no">Reset</span><span class="o">.</span><span class="n">fxns</span><span class="o">.</span><span class="n">length</span><span class="o">++]</span> <span class="o">=</span> <span class="s2">&quot;&amp;utilsCopyVecs2ATcm&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Could potentially place sysbios vector at ATCM via the linker command file. When booting via the TI SBL, the SBL would try and copy sysbios vector to 0x0 / ATCM. TI has not validated this method.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="c7x_non_secure_mode.html" class="btn btn-neutral float-right" title="8.5. FAQ - C7x : Steps to switch C7x SysBIOS application from secure mode to non-secure mode" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="faq_fvid2.html" class="btn btn-neutral" title="8.3. FAQ - FVID2" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+      <a href="http://www.ti.com/corp/docs/legal/copyright.shtml">&copy; Copyright 1995-2020</a>, Texas Instruments Incorporated. All rights reserved. <br>
+      <a href="http://www.ti.com/corp/docs/legal/trademark/trademrk.htm">Trademarks</a> | <a href="http://www.ti.com/corp/docs/legal/privacy.shtml">Privacy policy</a> | <a href="http://www.ti.com/corp/docs/legal/termsofuse.shtml">Terms of use</a> | <a href="http://www.ti.com/lsds/ti/legal/termsofsale.page">Terms of sale</a>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'08_00_00',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script src="http://www.ti.com/assets/js/headerfooter/analytics.js" type="text/javascript" charset="utf-8"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+        });
+
+      var menuHeight = window.innerHeight;
+
+      var contentOffset = $(".wy-nav-content-wrap").offset();
+      var contentHeight = $(".wy-nav-content-wrap").height();
+      var contentBottom = contentOffset.top + contentHeight;
+
+      function setNavbarTop() {
+          var scrollTop = $(window).scrollTop();
+          var maxTop = scrollTop + menuHeight;
+
+          // If past the header
+          if (scrollTop > contentOffset.top && maxTop < contentBottom) {
+            stickyTop = scrollTop - contentOffset.top;
+          } else if (maxTop > contentBottom) {
+            stickyTop = scrollTop - contentOffset.top - (maxTop - contentBottom);
+          } else {
+            stickyTop = 0;
+          }
+
+          $(".wy-nav-side").css("top", stickyTop);
+      }
+
+      $(document).ready(function() {
+        setNavbarTop();
+        $(window).scroll(function () {
+          setNavbarTop();
+        });
+      });
+  </script>
+   
+
+</body>
+</html>
